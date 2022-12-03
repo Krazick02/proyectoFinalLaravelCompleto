@@ -1,11 +1,11 @@
 @extends('plantilla')
 
-@section('title','Edit categories')
+@section('title','Edit brands')
 
 
 @section('content')
 
-<form action="{{ route('brands.update',$category->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('brands.update',$brand->id) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="row text-center">
@@ -14,14 +14,14 @@
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="name">First name</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}"/>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ $brand->name }}"/>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Last name</label>
-                        <input type="text" name="description" id="description" class="form-control" value="{{ $category->description }}"/>
+                        <input type="text" name="description" id="description" class="form-control" value="{{ $brand->description }}"/>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="name">rol</label>
-                        <input type="text" name="rol" id="rol" class="form-control" value="{{ $category->rol }}"/>
+                        <input type="text" name="rol" id="rol" class="form-control" value="{{ $brand->rol }}"/>
                     </div>
                 </div>
 

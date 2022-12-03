@@ -52,6 +52,21 @@ class UserController extends Controller
         User::create($user);
         return redirect()->route('users.index');
     }
+    public function save(Request $request)
+    {
+        $user = $request->all();
+        if(
+            $imagen=$request->file('avatar')
+            ){
+            $ruta = 'img/avatars/';
+            $avatar =  date('YmdHis').".".$imagen->guessExtension();
+            $imagen->move($ruta,$avatar);
+            $user['avatar']="$avatar";
+        }
+        $user['password']=bcrypt($request -> password);
+        User::create($user);
+        return redirect()->route('auth.login');
+    }
 
     /**
      * Display the specified resource.

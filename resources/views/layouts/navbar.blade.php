@@ -52,14 +52,14 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{route('auth.profile')}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Perfil</span></a>
 
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="{{route('auth.login')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Cerrar sesión</span></a>
 
                     <form method="post" action="{{  url('logout')}}">
                         @csrf
-                        <button type="submit" name="logout">Logout</button>
+                        <div class="text-center">
+                            <a class="dropdown-item text-danger"  href="{{route('auth.profile')}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Perfil</span></a>
+                            <a class="dropdown-item text-danger" ><button class="btn btn-transparent" type="submit"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Cerrar sesión</span></button></a>
+                        </div>
                     </form>
 
                 </div>

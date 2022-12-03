@@ -1,3 +1,11 @@
+{{-- @include('layouts.verificar') --}}
+
+{{-- @if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600">
+        {{ session('status') }}
+    </div>
+@endif --}}
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,11 +22,11 @@
         <!-- Begin page -->
         <div id="layout-wrapper">
 
-            {{-- @include('layouts.navbar') --}}
+            @include('layouts.navbar')
 
             <!-- ========== Left Sidebar Start ========== -->
 
-            {{-- @include('layouts.sidebar') --}}
+            @include('layouts.sidebar')
 
             <!-- Left Sidebar End -->
 

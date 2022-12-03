@@ -26,10 +26,22 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="avatar-md profile-user-wid mb-4">
-                                <img src="{{asset('images/users/avatar-1.jpg')}}" alt="" class="img-thumbnail rounded-circle">
+                                <img src="/img/avatars/{{Auth::user()->avatar}}" alt="" class="img-thumbnail rounded-circle">
                             </div>
-                            <h5 class="font-size-20 text-truncate"> Cynthia Price</h5>
-                            <p class="text-muted mb-0 text-truncate">Rol : Administrador</p>
+                            <h5 class="font-size-20 text-truncate"> {{Auth::user()->name}}</h5>
+                            <p class="text-muted mb-0 text-truncate"> Puesto :
+                                @switch(Auth::user()->rol)
+                                    @case(0)
+                                        {{ 'Gerente' }}
+                                        @break
+                                    @case(1)
+                                        {{ 'Administrador' }}
+                                        @break
+                                    @case(2)
+                                        {{ 'Vendedor' }}
+                                        @break
+                                @endswitch
+                            </p>
                         </div>
 
                     </div>
@@ -47,23 +59,23 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">ID:</th>
-                                    <td>1</td>
+                                    <td>{{ Auth::user()->id }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nombre:</th>
-                                    <td>Cynthia</td>
+                                    <td>{{ Auth::user()->name }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Apellido:</th>
-                                    <td>Collins</td>
+                                    <td>{{ Auth::user()->lastname }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Teléfono:</th>
-                                    <td>6121564537</td>
+                                    <td>{{ Auth::user()->phone_number }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Correo:</th>
-                                    <td>cynthiaskote@gmail.com</td>
+                                    <td>{{ Auth::user()->email }}</td>
                                 </tr>
 
 
