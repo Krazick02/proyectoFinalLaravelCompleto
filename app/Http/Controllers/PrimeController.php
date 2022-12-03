@@ -20,16 +20,22 @@ class PrimeController extends Controller
         $primes = Prime::orderBy('id')->paginate(10);
         return view('primes.index',compact('primes'));
     }
+    public function inventario()
+    {
+        //
+        $primes = Prime::orderBy('id')->paginate(10);
+        return view('inventario.index',compact('primes'));
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idProduct)
     {
         //
-        return view('primes.create');
+        return view('primes.create',compact('idProduct'));
     }
 
     /**
@@ -60,7 +66,9 @@ class PrimeController extends Controller
             $product['cover']="$cover";
         }
         Prime::create($product);
-        return redirect()->route('primes.index');
+        return redirect()->route('products.show',$product['product_id']);
+        // return back();
+
     }
 
     /**
@@ -103,7 +111,7 @@ class PrimeController extends Controller
         $request->validate([
             'description'=>'required',
             'weight_in_grams'=>'min:0',
-            'amount'=>'',
+            'amount'=>'required',
             'stock_min'=>'required',
             'stock_max'=>'required',
             'stock'=>'required',
@@ -119,7 +127,9 @@ class PrimeController extends Controller
             $product['cover']="$cover";
         }
         $prime->update($product);
-        return redirect()->route('primes.index');
+        return redirect()->route('primes.show',$prime->id);
+        // return back();
+
     }
 
     /**
@@ -130,8 +140,9 @@ class PrimeController extends Controller
      */
     public function destroy(Prime $prime)
     {
+        $producto = $prime->product_id;
         $prime->delete();
-        return redirect()->route('primes.index');
+        return redirect()->route('products.show',$producto);
     }
 
     public function importar(Request $entrada){
@@ -147,8 +158,8 @@ class PrimeController extends Controller
                 }
             }
 
-            Prime::insert($datosImportar);
-            return back();
+            // Prime::insert($datosImportar);
+            // return back();
         }
     }
     public function exportar(){

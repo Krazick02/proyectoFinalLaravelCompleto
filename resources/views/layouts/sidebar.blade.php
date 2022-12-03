@@ -82,7 +82,7 @@
 
 
             <li>
-                <a href="{{ route('inventario.index') }}" class="waves-effect">
+                <a href="{{ route('prime.inventario') }}" class="waves-effect">
                     <i class="bx bx-task"></i>
                     <span key="t-tasks">Inventario</span>
                 </a>

@@ -1,30 +1,63 @@
 @extends('plantilla')
 
-@section('title','category Details')
+@section('title','Detalles categoria')
 
 
 @section('content')
-<h1>Information about</h1>
+<div class="container">
     <div class="row">
-        <div class="col text-center">
+        <div class="col-xl-12">
+            <div class="card mt-5 overflow-hidden">
+                <div class="bg-primary bg-soft">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="text-primary p-3">
+                                <h5 class="text-primary">{{ $category->name }}</h5>
 
-            <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="...">
+                            </div>
+                        </div>
+                        <div class="col-5 align-self-end">
+
+                            <img src="{{asset('images/profile-img.png')}}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end card -->
+
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{$category->name}}</h5>
-                    <p class="card-text">{{$category->description}}</p>
+                    <h4 class="card-title mb-12">Información</h4>
+
+
+                    <div class="table-responsive">
+                        <p>
+                            {{ $category->description }}
+                        </p>
+                    </div>
                 </div>
             </div>
-
+            <!-- end card -->
             @foreach ($category->products as $product)
-            <div class="card" style="width: 18rem;">
-                <img src="/img/covers/{{ $product->cover }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{$product->name}}</h5>
-                    <p class="card-text">{{$product->stock}}</p>
+            <div class="col-xl-4 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="product-img position-relative">
+
+                            <img src="/img/covers{{ $product->cover}}" alt=""
+                                class="img-fluid mx-auto d-block">
+                        </div>
+                        <div class="mt-4 text-center">
+                            <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">{{ $product->name}}</a></h5>
+                            <div class="hstack flex-wrap justify-content-center gap-2 mb-3 mb-lg-0">
+
+                                <a type="button" class="btn btn-info" href="{{ route('products.show',$product->id) }}">Vista de Detalle</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach
-        </div>
-    </div>
+</div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('plantilla')
 
-@section('title','Create prodcuts')
+@section('title','Create products')
 
 
 @section('content')
@@ -10,17 +10,17 @@
         <div class="row text-center">
 
             <div class="row mb-4">
-                <div class="col-lg-6  col-sm-12">
-                    <div class="form-outline text-start">
-                        <label class="form-label" for="name"> weigth</label>
-                        <input type="text" name="weight_in_grams" id="weight_in_grams" class="form-control" />
-                    </div>
-                </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">description</label>
                         <input type="text" name="description" id="description" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-lg-6  col-sm-12">
+                    <div class="form-outline text-start">
+                        <label class="form-label" for="name"> weigth</label>
+                        <input type="text" name="weight_in_grams" id="weight_in_grams" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -57,16 +57,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6  col-sm-12">
-                <div class="form-outline text-start">
-                    <label class="form-label" for="lastname">product</label>
-                    <input type="text" name="product_id" id="product_id" class="form-control" />
-                </div>
-            </div>
 
 
             <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+                <input type="hidden" name="product_id" value="{{ $idProduct }}">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Crear</button>
             </div>
         </div>
 

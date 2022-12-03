@@ -24,24 +24,21 @@
 
                 <div class="row">
                     @foreach ($products as $product)
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="product-img position-relative">
+                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="product-img position-relative">
 
-                                        <img src="/img/covers{{ $product->cover}}" alt=""
-                                            class="img-fluid mx-auto d-block">
-                                    </div>
-                                    <div class="mt-4 text-center">
-                                        <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">{{ $product->name}}</a></h5>
-                                        <div class="hstack flex-wrap justify-content-center gap-2 mb-3 mb-lg-0">
-
-                                            <a type="button" class="btn btn-info" href="{{ route('products.show',$product->id) }}">Vista de Detalle</a>
-                                        </div>
-                                    </div>
+                                    <img src="/img/covers/{{ $product->cover }}" style="width:150px; height:150px;" alt=""
+                                        class="img-fluid mx-auto d-block">
+                                </div>
+                                <div class="mt-4 text-center">
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">{{ $product->name }}</a></h5>
+                                    <a href="{{ route('products.show',$product->id) }}" class="btn btn-primary">Ver Detalles</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
                 <!-- end row -->

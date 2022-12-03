@@ -89,7 +89,7 @@ Route::put('/products/update/{id}',[ProductController::class,'update'])->name('p
 Route::delete('/products/delete/{product}',[ProductController::class,'destroy'])->name('products.destroy'); // elimina un producto en especifico recive un objeto producto
 
 Route::get('/primes/index',[PrimeController::class,'index'])->name('primes.index');  //Muestra todos los materia prima
-Route::get('/primes/create',[PrimeController::class,'create'])->name('primes.create'); //Manda a formulario crear materia prima
+Route::get('/primes/create/{idProduct}',[PrimeController::class,'create'])->name('primes.create'); //Manda a formulario crear materia prima
 Route::get('/primes/{id}',[PrimeController::class,'show'])->name('primes.show'); //Muestra detalles de un prime
 Route::get('/primes/edit/{prime}',[PrimeController::class,'edit'])->name('primes.edit'); // manda al form editar prime recive un objeto prime
 Route::post('/primes',[PrimeController::class,'store'])->name('primes.store'); //guarda un nuevo prime
@@ -104,5 +104,6 @@ Route::post('/orders',[OrderController::class,'store'])->name('orders.store'); /
 Route::put('/orders/update/{id}',[OrderController::class,'update'])->name('orders.update'); //actualiza un orden recive el valor del id
 Route::delete('/orders/delete/{order}',[OrderController::class,'destroy'])->name('orders.destroy'); // elimina un orden en especifico recive un objeto orden
 
+Route::get('/inventario',[PrimeController::class,'inventario'])->name('prime.inventario');
 Route::get('/inventario/exportar',[PrimeController::class,'exportar'])->name('prime.exportar');
 Route::post('/inventario/importar',[PrimeController::class,'importar'])->name('prime.importar');
