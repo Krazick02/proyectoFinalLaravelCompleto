@@ -44,6 +44,9 @@
                 <!-- end row -->
             </div>
         </div>
+        <div class="d-flex justify-content-end">
+            {{$products->links()}}
+        </div>
         <!-- end row -->
 
     </div> <!-- container-fluid -->

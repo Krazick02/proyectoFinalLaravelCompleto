@@ -80,6 +80,10 @@
 
                                 <h6 class="">Descripción:</h6>
                                 <p class="text-muted mb-4">{{ $product->description }}</p>
+                                <h6 class="">Marca:</h6>
+                                <a href="{{ route('brands.show',$product->brand->id) }}">
+                                   <ul><li> <span>{{ $product->brand->name }}</span></li></ul>
+                                </a>
 
                                 @if ($product->categories->isNotEmpty())
                                     <h6 class="">Categorias:</h6>
@@ -103,7 +107,7 @@
                                                     <img src="/img/covers/{{ $prime->cover }}" style="width: 50px;height: 50px;"
                                                         alt="" class="avatar-md">
                                                 </div>
-                                                <p>{{ $prime->description }}</p>
+                                                <p>${{ $prime->amount }} </p>
                                             </a>
                                         @endforeach
                                     </div>

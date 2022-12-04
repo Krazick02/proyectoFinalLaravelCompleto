@@ -17,7 +17,7 @@ Route::get('/', function(){
 })->name('auth.login');
 
 Route::get('/home', function(){
-    $products = Product::all();
+    $products = Product::orderBy('id')->paginate(25);
     return view('auth.home',compact('products'));
 })->name('auth.home');
 

@@ -22,7 +22,7 @@ class Product extends Model
     public function categories(){
         return $this->belongsToMany('App\Models\Category');
     }
-    public function brands(){
+    public function brand(){
         return $this->belongsTo('App\Models\Brand');
     }
     public function primes(){

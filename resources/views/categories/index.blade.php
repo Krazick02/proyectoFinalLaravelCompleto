@@ -28,7 +28,6 @@
         <tr>
             <th scope="row">{{$category->id}}</th>
             <td>{{$category->name}}</td>
-            <td>{{$category->description}}</td>
             <td>
 
                 <form action="{{ route('categories.destroy',$category) }}" method="POST">
@@ -44,6 +43,8 @@
     </tbody>
 
 </table>
-{{$categories->links()}}
+<div class="d-flex justify-content-end">
+    {{$categories->links()}}
+</div>
 
 @endsection

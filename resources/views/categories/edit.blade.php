@@ -5,7 +5,7 @@
 
 @section('content')
 
-<form action="{{ route('brands.update',$category->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('categories.update',$category->id) }}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="row text-center">

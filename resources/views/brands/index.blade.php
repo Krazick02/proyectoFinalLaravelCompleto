@@ -19,7 +19,6 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Description</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -28,22 +27,27 @@
         <tr>
             <th scope="row">{{$brand->id}}</th>
             <td>{{$brand->name}}</td>
-            <td>{{$brand->description}}</td>
             <td>
 
-                <form action="{{ route('brands.destroy',$brand) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    <a href="{{ route('brands.show',$brand->id) }}" class="btn btn-info">Details</a>
-                    <a href="{{ route('brands.edit',$brand) }}" class="btn btn-warning">Edit</a>
-                </form>
+                <div class="col text-end">
+                    <div class="col-6">
+                        <form action="{{ route('brands.destroy',$brand) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <a href="{{ route('brands.show',$brand->id) }}" class="btn btn-info">Details</a>
+                            <a href="{{ route('brands.edit',$brand) }}" class="btn btn-warning">Edit</a>
+                        </form>
+                    </div>
+                </div>
             </td>
         </tr>
         @endforeach
     </tbody>
 
 </table>
-{{$brands->links()}}
+<div class="d-flex justify-content-end">
+    {{$brands->links()}}
+</div>
 
 @endsection

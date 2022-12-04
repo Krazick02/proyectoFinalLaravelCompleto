@@ -1,21 +1,137 @@
 @extends('plantilla')
 
-@section('title','client Details')
 
+@section('title','Mostrar clientes')
 
 @section('content')
-<h1>Information about</h1>
-    <div class="row">
-        <div class="col text-center">
+<div class="container">
 
-            <div class="card" style="width: 18rem;">
-                <img src="/img/avatars/{{ $client->avatar }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{$client->name}}</h5>
-                    <p class="card-text">{{$client->lastname}}</p>
-                    <p class="card-text">{{$client->email}}</p>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card overflow-hidden">
+                <div class="bg-info bg-soft">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="text-primary p-3">
+                                <h4 class="text-primary">Detalles Clientes</h4>
+
+                            </div>
+                        </div>
+                        <div class="col align-self-end">
+
+                            <img src="/img/avatars/{{ $client->avatar }}" alt="" style="width: 200px;height: 200px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="mb-4">Nombre : {{ $client->name }}</h2>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-12">Información Cliente</h4>
+
+
+                                <div class="table">
+                                    <table class="table table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">ID:</th>
+                                                <td>{{ $client->id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Nombre:</th>
+                                                <td>{{ $client->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Apellido:</th>
+                                                <td>{{ $client->lastname }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Teléfono:</th>
+                                                <td>{{ $client->phone_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Correo:</th>
+                                                <td>{{ $client->email }}</td>
+                                            </tr>
+                                            @if (isset($client->user))
+                                            <tr>
+                                                <th scope="row">Creado por:</th>
+                                                <td>{{ $client->user->name }} {{ $client->user->lastname }}</td>
+                                            </tr>
+                                            @endif
+                                            <tr>
+                                                <th scope="row">Creado el dia:</th>
+                                                <td>{{ $client->created_at }}</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <!-- end card -->
+
+
+            <!-- end card -->
+
+            @if (isset($client->orders) && $client->orders->count())
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h4 class="card-title">Ordenes</h4>
+
+                                <p class="card-title-desc"></p>
+
+                                <div class="container">
+
+                                        <table id="tech-companies-1" class="table table-striped">
+                                            <thead>
+                                            <tr>
+
+                                                <th data-priority="1">Folio</th>
+                                                <th data-priority="2">Monto Total</th>
+                                                <th data-priority="3">Estatus</th>
+                                                <th data-priority="4">Action</th>
+
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($client->orders as $order)
+                                                <tr>
+                                                    <th>#{{ $order->folio }}</th>
+                                                    <th>${{ $order->amount }}</th>
+                                                    <td><span class="badge badge-soft-warning">{{ $order->status }}</span></td>
+
+                                                    <td>
+                                                        <a href="{{ route('orders.show','1') }}" class="btn btn-info">Ver Detalles</a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+
+            </div> <!-- container-fluid -->
+            @endif
+</div>
+
+
 @endsection

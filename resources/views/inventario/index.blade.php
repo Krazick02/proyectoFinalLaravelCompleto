@@ -65,7 +65,11 @@
                                     @endforeach
 
                                 </tbody>
+
                             </table>
+                            <div class="d-flex justify-content-end">
+                                {{$primes->links()}}
+                            </div>
                         </div>
 
 

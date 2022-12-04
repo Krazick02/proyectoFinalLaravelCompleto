@@ -70,17 +70,6 @@
                 </a>
 
             </li>
-
-            <li>
-                <a href="{{ route('primes.index') }}" class="waves-effect">
-                    <i class="bx bxs-eraser"></i>
-
-                    <span key="t-forms">Materia Prima</span>
-                </a>
-
-            </li>
-
-
             <li>
                 <a href="{{ route('prime.inventario') }}" class="waves-effect">
                     <i class="bx bx-task"></i>

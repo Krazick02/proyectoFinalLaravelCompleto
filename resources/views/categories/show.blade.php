@@ -10,15 +10,21 @@
             <div class="card mt-5 overflow-hidden">
                 <div class="bg-primary bg-soft">
                     <div class="row">
-                        <div class="col-7">
-                            <div class="text-primary p-3">
-                                <h5 class="text-primary">{{ $category->name }}</h5>
+                        <div class="col-10">
+                            <div class="text-primary p-1">
+                                <h3 class="text-primary">{{ $category->name }}</h3>
 
                             </div>
                         </div>
-                        <div class="col-5 align-self-end">
+                        <div class="col-2 align-self-end p-1">
 
-                            <img src="{{asset('images/profile-img.png')}}" alt="" class="img-fluid">
+                            {{-- <img src="{{asset('images/profile-img.png')}}" alt="" class="img-fluid"> --}}
+                            <form action="{{ route('categories.destroy',$category) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <a href="{{ route('categories.edit',$category) }}" class="btn btn-warning">Edit</a>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -28,14 +34,11 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-12">Información</h4>
+                    <h4 class="card-title mb-12">Descripcion</h4>
 
-
-                    <div class="table-responsive">
-                        <p>
-                            {{ $category->description }}
-                        </p>
-                    </div>
+                    <p>
+                        {{ $category->description }}
+                    </p>
                 </div>
             </div>
             <!-- end card -->
