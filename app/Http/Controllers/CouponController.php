@@ -15,7 +15,7 @@ class CouponController extends Controller
     public function index()
     {
         //
-        $coupons = Coupon::orderBy('id')->paginate(10);
+        $coupons = Coupon::orderBy('id')->paginate(12);
         return view('coupons.index',compact('coupons'));
     }
 
@@ -87,7 +87,7 @@ class CouponController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'count_uses'=>'required',
+            'count_uses'=>'',
         ]);
         $cupon=Coupon::find($id);
 

@@ -31,32 +31,26 @@
                         <input type="text" name="max_uses" id="max_uses" class="form-control" />
                     </div>
                 </div>
-
-                <div class="col-lg-6  col-sm-12">
-                    <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">uses</label>
-                        <input type="text" name="count_uses" id="count_uses" class="form-control" />
-                    </div>
-                </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-outline mb-4 text-start">
-                        <label class="form-label" for="form3Example3">Min amount</label>
+                        <label class="form-label" for="form3Example3">Monto minimo</label>
                         <input type="text" name="min_amount" id="min_amount" class="form-control" />
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-outline mb-4 text-start">
-                        <label class="form-label" for="password">discount</label>
+                        <label class="form-label" for="password">Descuento</label>
                         <input type="text" name="discount" id="discount" class="form-control" />
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+                <input type="hidden" name="count_uses" value="0">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
             </div>
         </div>
 

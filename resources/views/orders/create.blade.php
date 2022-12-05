@@ -14,7 +14,7 @@
                     <div class="form-outline text-start">
                         <label class="form-label" for="name"> cliente</label>
                         {{-- <input type="text" name="client_id" id="client_id" class="form-control" /> --}}
-                        <select name="client_id" id="client_id">
+                        <select class="form-select" name="client_id" id="client_id">
                             @foreach ($clients as $client)
                                 <option value="{{$client->id}}">{{$client->name}}</option>
                             @endforeach
@@ -24,8 +24,8 @@
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">prime_id</label>
-                        <select name="prime_id" id="prime_id">
+                        <label class="form-label" for="lastname">Producto</label>
+                        <select class="form-select" name="prime_id" id="prime_id">
                             @foreach ($primes as $prime)
                                 <option value="{{$prime->id}}">{{$prime->stock}}
                                     <img src="/img/covers/{{ $prime->cover }}" class="img-thumbnail" alt="">
@@ -39,21 +39,29 @@
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">quantity</label>
+                        <label class="form-label" for="name">Cantidad</label>
                         <input type="text" name="quantity" id="quantity" class="form-control" />
                     </div>
                 </div>
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">coupon_id</label>
-                        <input type="text" name="coupon_id" id="coupon_id" class="form-control" />
+                        <label class="form-label" for="name">Cupon</label>
+                        <select class="form-select" name="coupon_id" id="coupon_id">
+                            @foreach ($coupons as $coupon)
+                                <option value="{{$coupon->id}}">{{$coupon->name}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">payment_method</label>
-                        <input type="text" name="payment_method" id="payment_method" class="form-control" />
+                        <label class="form-label" for="lastname">Metodo de pago</label>
+                        <select class="form-select" name="payment_method" id="payment_method">
+                                <option value="1">Tarjeta </option>
+                                <option value="2">Efectivo </option>
+                        </select>
                     </div>
                 </div>
 

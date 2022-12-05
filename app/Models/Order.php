@@ -24,10 +24,10 @@ class Order extends Model
     public function client(){
         return $this->belongsTo('App\Models\Client');
     }
-    public function primes(){
-        return $this->hasMany('App\Models\Prime');
+    public function prime(){
+        return $this->belongsTo('App\Models\Prime');
     }
-    public function coupons(){
-        return $this->hasMany('App\Models\Coupon');
+    public function coupon(){
+        return $this->belongsTo('App\Models\Coupon');
     }
 }

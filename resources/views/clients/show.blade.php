@@ -111,7 +111,38 @@
                                                 <tr>
                                                     <th>#{{ $order->folio }}</th>
                                                     <th>${{ $order->amount }}</th>
-                                                    <td><span class="badge badge-soft-warning">{{ $order->status }}</span></td>
+                                                    <td>
+                                                        @switch($order->status)
+                                                        @case(0)
+                                                            <span class=".text-primary">
+                                                                {{ 'Pendiente de envio' }}</span>
+                                                        @break
+
+                                                        @case(1)
+                                                            <span class=".text-warning"> {{ 'En camino' }}</span>
+                                                        @break
+
+                                                        @case(2)
+                                                            <span class=".text-success">
+                                                                {{ 'Entregada' }}</span>
+                                                        @break
+
+                                                        @case(3)
+                                                            <span class=".text-danger">
+                                                                {{ 'Cancelada' }}</span>
+                                                        @break
+
+                                                        @case(4)
+                                                            <span class=".text-secondary">
+                                                                {{ 'Olvidada' }}</span>
+                                                        @break
+
+                                                        @case(5)
+                                                            <span class=".text-info">
+                                                                {{ 'Pendiente de pago' }}</span>
+                                                        @break
+                                                    @endswitch
+                                                    </td>
 
                                                     <td>
                                                         <a href="{{ route('orders.show','1') }}" class="btn btn-info">Ver Detalles</a>

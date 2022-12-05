@@ -17,7 +17,7 @@ class Coupon extends Model
         'discount',
     ];
 
-    public function coupons(){
+    public function orders(){
         return $this->hasMany('App\Models\Order');
     }
 }
