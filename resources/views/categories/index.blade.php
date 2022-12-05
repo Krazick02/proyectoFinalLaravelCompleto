@@ -28,6 +28,7 @@
         <tr>
             <th scope="row">{{$category->id}}</th>
             <td>{{$category->name}}</td>
+            <td>{{$category->description}}</td>
             <td>
 
                 <form action="{{ route('categories.destroy',$category) }}" method="POST">

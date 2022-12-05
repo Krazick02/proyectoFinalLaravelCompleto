@@ -74,15 +74,61 @@
 
 
                             <div class="mt-4 mt-xl-3">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-7 d-inline-block text-truncate">
+                                        <h4 class="mt-1 mb-3">Nombre : {{ $product->name }}</h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="col-xl-6">
+                                            <div class="d-flex">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        Opciones
+                                                    </button>
+                                                    <div class="dropdown-menu text-center">
 
-                                <h4 class="mt-1 mb-3">Nombre : {{ $product->name }}</h4>
+
+                                                        <form action="{{ route('products.destroy', $product) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="row">
+                                                                <div>
+                                                                    <button type="submit" class="btn btn-danger"
+                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                        title="Eliminar">Eliminar producto</button>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <a href="{{ route('primes.create', $product->id) }}"
+                                                                    class="btn btn-info" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="Agregar materia prima al producto.">Agregar M.P.</a>
+                                                            </div>
+                                                            <div>
+                                                                <a href="{{ route('products.edit', $product) }}"
+                                                                    class="btn btn-warning" data-bs-toggle="tooltip"
+                                                                    data-bs-placement="top" title="Editar">Editar producto</a>
+                                                            </div>
+                                                        </form>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
 
 
                                 <h6 class="">Descripción:</h6>
                                 <p class="text-muted mb-4">{{ $product->description }}</p>
                                 <h6 class="">Marca:</h6>
-                                <a href="{{ route('brands.show',$product->brand->id) }}">
-                                   <ul><li> <span>{{ $product->brand->name }}</span></li></ul>
+                                <a href="{{ route('brands.show', $product->brand->id) }}">
+                                    <ul>
+                                        <li> <span>{{ $product->brand->name }}</span></li>
+                                    </ul>
                                 </a>
 
                                 @if ($product->categories->isNotEmpty())
@@ -104,8 +150,8 @@
                                         @foreach ($product->primes as $prime)
                                             <a href="{{ route('primes.show', $prime->id) }}">
                                                 <div class="product-color-item border rounded">
-                                                    <img src="/img/covers/{{ $prime->cover }}" style="width: 50px;height: 50px;"
-                                                        alt="" class="avatar-md">
+                                                    <img src="/img/covers/{{ $prime->cover }}"
+                                                        style="width: 50px;height: 50px;" alt="" class="avatar-md">
                                                 </div>
                                                 <p>${{ $prime->amount }} </p>
                                             </a>
@@ -116,51 +162,11 @@
 
                             </div>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="d-flex">
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Opciones
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="row">
-                                                <div>
-                                                    <a href="{{ route('primes.create',$product->id) }}" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Add precentations">Agregar materia prima</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                         <form action="{{ route('products.destroy',$product) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <div class="row">
-                                                <div>
-                                                    <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="delete">Eliminar producto</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        </li>
-                                        <li>
-                                            <div class="row">
-                                                <div>
-                                                    <a href="{{ route('products.edit',$product) }}" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Editar producto</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    </div>
-    </div> <!-- end col -->
-    </div> <!-- end row -->
 
 @endsection
