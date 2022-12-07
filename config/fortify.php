@@ -63,7 +63,7 @@ return [
 
     'home' => RouteServiceProvider::HOME,
     'redirects' => [
-        'logout' => 'Auth/login',
+        'logout' => '/',
     ],
     /*
     |--------------------------------------------------------------------------

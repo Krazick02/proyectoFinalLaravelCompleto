@@ -44,7 +44,7 @@ class BrandController extends Controller
         $brand = $request->all();
 
         Brand::create($brand);
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'Marca creada con exito');
     }
 
     /**
@@ -89,7 +89,7 @@ class BrandController extends Controller
         $brand = $request->all();
 
         $marca->update($brand);
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'Marca actualizada con exito');
     }
 
     /**
@@ -101,6 +101,6 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'Marca eliminada con exito');
     }
 }

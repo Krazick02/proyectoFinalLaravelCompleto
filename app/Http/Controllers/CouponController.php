@@ -41,15 +41,14 @@ class CouponController extends Controller
         $request->validate([
             'name'=>'required',
             'code'=>'required|min:5',
-            'max_uses'=>'required|min:1',
-            'count_uses'=>'required|min:1',
-            'min_amount'=>'required|min:0',
-            'discount'=>'required|min:0|max:100',
+            'max_uses'=>'required|min:1|numeric',
+            'min_amount'=>'required|min:0|numeric',
+            'discount'=>'required|min:0|max:100|numeric',
         ]);
         $coupon = $request->all();
 
         Coupon::create($coupon);
-        return redirect()->route('coupons.index');
+        return redirect()->route('coupons.index')->with('success', 'Cupón creado con exito');
     }
 
     /**
@@ -94,7 +93,7 @@ class CouponController extends Controller
         $coupon = $request->all();
 
         $cupon->update($coupon);
-        return redirect()->route('coupons.index');
+        return redirect()->route('coupons.index')->with('success', 'Cupón actualizado con exito');
     }
 
     /**
@@ -107,6 +106,6 @@ class CouponController extends Controller
     {
 
         $coupon->delete();
-        return redirect()->route('coupons.index');
+        return redirect()->route('coupons.index')->with('success', 'Cupón creado con exito');
     }
 }

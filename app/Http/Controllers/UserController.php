@@ -39,6 +39,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|accepted^[\pL\s\-]+$/u',
+            'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
+            'rol'=>'required|integer',
+            'avatar'=>'required|image|mimes:png,jpeg,svg,jpg|max:1024',
+            'phone_number'=>'required|min:8|max:14',
+            'email'=>'required',
+            'password'=>'required|min:8'
+        ]);
+
         $user = $request->all();
         if(
             $imagen=$request->file('avatar')
@@ -50,7 +60,7 @@ class UserController extends Controller
         }
         $user['password']=bcrypt($request -> password);
         User::create($user);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuario creado con exito');
     }
     public function save(Request $request)
     {
@@ -65,7 +75,7 @@ class UserController extends Controller
         }
         $user['password']=bcrypt($request -> password);
         User::create($user);
-        return redirect()->route('auth.login');
+        return redirect()->route('Auth.login')->with('success', 'Usuario registrado con exito');;
     }
 
     /**
@@ -102,11 +112,11 @@ class UserController extends Controller
     public function update(Request $request,$id)
     {
         $request->validate([
-            'name'=>'required',
-            'lastname'=>'required',
-            'rol'=>'required|integer|min:0|max:2',
-            'phone_number'=>'required|min:8|max:14',
-            'email'=>'required',
+            'name'=>'required|regex:/^[\pL\s\-]+$/u',
+            'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
+            'rol'=>'required|integer|min:0|max:2|numeric',
+            'phone_number'=>'required|min:8|max:14|numeric',
+            'email'=>'required|email',
         ]);
 
         $usuario=User::find($request->id);
@@ -122,7 +132,7 @@ class UserController extends Controller
         }
 
         $usuario->update($user);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado con exito');
     }
 
     /**
@@ -134,7 +144,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado con exito');;
 
     }
 }

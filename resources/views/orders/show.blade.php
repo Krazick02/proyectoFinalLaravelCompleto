@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="text-primary p-3">
-                                    <h5 class="text-primary">Orden : #537</h5>
+                                    <h5 class="text-primary">Orden : #{{ $order->id }}</h5>
 
                                 </div>
                             </div>
@@ -149,6 +149,7 @@
                                                 <th data-priority="2">Descripción</th>
                                                 <th data-priority="3">Cantidad</th>
                                                 <th data-priority="4">Precio</th>
+                                                <th data-priority="4">Total</th>
 
 
                                         </thead>
@@ -161,8 +162,9 @@
                                                             width="100px" height="100px" class="img-thumbnail"></a>
                                                     </td>
                                                     <td>{{ $order->prime->product->name }}</td>
-                                                    <td>{{ $order->prime->stock }}</td>
+                                                    <td>{{ $order->quantity }}</td>
                                                     <td>${{ $order->prime->amount }}</td>
+                                                    <td>${{ $order->amount }}</td>
 
                                                 </tr>
                                             {{-- @endforeach --}}

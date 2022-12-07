@@ -69,7 +69,7 @@
                                         <div class="form-group row mb-4">
                                             <label for="phone_number" class="col-form-label ">Teléfono</label>
                                             <div class="">
-                                                <input id="phone_number" name="phone_number" type="text"
+                                                <input id="phone_number" name="phone_number" type="number"
                                                     class=" inner form-control" placeholder="Ingresar teléfono" required>
                                             </div>
                                         </div>

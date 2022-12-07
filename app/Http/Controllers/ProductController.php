@@ -18,7 +18,9 @@ class ProductController extends Controller
     {
         //
         $products = Product::orderBy('id')->paginate(25);
-        return view('products.index',compact('products'));
+        $brands = Brand::All();
+        $categories = Category::All();
+        return view('products.index',compact('products','categories','brands'));
     }
 
     /**
@@ -49,7 +51,7 @@ class ProductController extends Controller
             'description'=>'required',
             'cover'=>'required|image|mimes:png,jpeg,svg,jpg|max:2048',
             'category_id'=>'required',
-            'brand_id'=>'required',
+            'brand_id'=>'required|numeric',
         ]);
         $product = $request->all();
         if(
@@ -63,7 +65,7 @@ class ProductController extends Controller
         unset($product['category_id']);
         //dd($request->category_id);
         Product::create($product)->categories()->attach($request->category_id);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Producto creado con exito');
     }
 
     /**
@@ -76,8 +78,9 @@ class ProductController extends Controller
     {
 
         $product = product::find($id);
-
-        return view('products.show',compact('product'));
+        $brands = Brand::All();
+        $categories = Category::All();
+        return view('products.show',compact('product','categories','brands'));
     }
 
     /**
@@ -105,7 +108,7 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required',
             'description'=>'required',
-            'brand_id'=>'required',
+            'brand_id'=>'required|numeric',
 
         ]);
 
@@ -126,7 +129,7 @@ class ProductController extends Controller
         unset($product['category_id']);
         $producto->categories()->attach($request->category_id);
         $producto->update($product);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Producto editado con exito');
     }
 
     /**
@@ -138,6 +141,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Producto eliminado con exito');;
     }
 }

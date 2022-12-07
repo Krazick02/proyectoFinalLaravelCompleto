@@ -18,8 +18,11 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $primes = Prime::orderby('id')->paginate();
+        $coupons = Coupon::orderby('id')->paginate();
+        $clients = Client::orderby('id')->paginate();
         $orders = Order::orderBy('id')->paginate(10);
-        return view('orders.index',compact('orders'));
+        return view('orders.index', compact('orders', 'clients', 'coupons', 'primes'));
     }
 
     /**
@@ -36,8 +39,7 @@ class OrderController extends Controller
         $clients = Client::orderby('id')->paginate();
 
         //dd($clients);
-        return view('orders.create',compact('clients','coupons','primes'));
-
+        return view('orders.create', compact('clients', 'coupons', 'primes'));
     }
 
     /**
@@ -50,21 +52,55 @@ class OrderController extends Controller
     {
 
         $request->validate([
-            'client_id'=>'required',
-            'prime_id'=>'required',
-            'quantity'=>'required',
-            'payment_method'=>'required'
+            'client_id' => 'required|numeric',
+            'prime_id' => 'required|numeric',
+            'quantity' => 'required|numeric',
+            'payment_method' => 'required|numeric',
         ]);
 
         $amount = ((Prime::find($request->prime_id))->amount) * $request->quantity;
 
         $order = $request->all();
-        $order['folio'] = date('mdHis');
-        $order['status'] = '5';
-        $order['amount'] = "$amount";
 
-        order::create($order);
-        return redirect()->route('orders.index');
+
+        $prime = Prime::find($request->prime_id);
+        $stock = $prime->stock;
+
+        if (isset($request->coupon_id)) {
+            $coupon = Coupon::find($request->coupon_id);
+        }
+        if (isset($request->coupon_id)) {
+            if ($coupon->count_uses >= $coupon->max_uses) {
+                return redirect()->route('orders.index')->with('error', 'Cupon en limite de usos');
+            }
+            if ($coupon->min_amount > $amount) {
+                return redirect()->route('orders.index')->with('error', 'Monto insuficiente para aplicacion del cupon');
+            }
+            $coupon->count_uses++;
+            $coupon->save();
+            $amount=$amount-($amount*$coupon->discount);
+        }
+        if ($request->quantity > $stock) {
+            return redirect()->route('orders.index')->with('error', 'Stock insuficiente');
+        } else {
+            $order['folio'] = date('mdHis');
+            $order['status'] = '5';
+            $order['amount'] = "$amount";
+
+            order::create($order);
+
+            $prime->stock = $stock - $request->quantity;
+            $prime->save();
+
+            return redirect()->route('orders.index')->with('success', 'Orden creada con exito');
+        }
+
+
+        // dd($prime);
+
+
+
+
     }
 
     /**
@@ -80,7 +116,7 @@ class OrderController extends Controller
         $coupon = Coupon::find($order->coupon_id);
         $client = Client::find($order->client_id);
 
-        return view('orders.show',compact('order','client','coupon','prime'));
+        return view('orders.show', compact('order', 'client', 'coupon', 'prime'));
     }
 
     /**
@@ -92,8 +128,7 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
 
-        return view('orders.edit',compact('order'));
-
+        return view('orders.edit', compact('order'));
     }
 
     /**
@@ -107,15 +142,14 @@ class OrderController extends Controller
     {
 
         $request->validate([
-            'status'=>'required|min:0|max:6',
+            'status' => 'required|min:0|max:6',
 
         ]);
         $orden = Order::find($id);
         $order = $request->all();
 
         $orden->update($order);
-        return redirect()->route('orders.index');
-
+        return redirect()->route('orders.index')->with('success', 'Orden actualizada con exito');
     }
 
     /**
@@ -127,6 +161,6 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('orders.index');
+        return redirect()->route('orders.index')->with('success', 'Orden eliminada con exito');
     }
 }

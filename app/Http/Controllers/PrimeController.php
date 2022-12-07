@@ -49,12 +49,12 @@ class PrimeController extends Controller
         $request->validate([
             'description'=>'required',
             'weight_in_grams'=>'required|min:0',
-            'amount'=>'required',
-            'stock_min'=>'required',
-            'stock_max'=>'required',
-            'stock'=>'required',
+            'amount'=>'required|numeric',
+            'stock_min'=>'required|numeric',
+            'stock_max'=>'required|numeric',
+            'stock'=>'required|numeric',
+            'product_id'=>'required|numeric',
             'cover'=>'required|image|mimes:png,jpeg,svg,jpg|max:2048',
-            'product_id'=>'required',
         ]);
         $product = $request->all();
         if(
@@ -66,7 +66,7 @@ class PrimeController extends Controller
             $product['cover']="$cover";
         }
         Prime::create($product);
-        return redirect()->route('products.show',$product['product_id']);
+        return redirect()->route('products.show',$product['product_id'])->with('success', 'Materia prima creada con exito');;
         // return back();
 
     }
@@ -127,7 +127,7 @@ class PrimeController extends Controller
             $product['cover']="$cover";
         }
         $prime->update($product);
-        return redirect()->route('primes.show',$prime->id);
+        return redirect()->route('primes.show',$prime->id)->with('success', 'Materia prima actualizada con exito');
         // return back();
 
     }
@@ -142,7 +142,7 @@ class PrimeController extends Controller
     {
         $producto = $prime->product_id;
         $prime->delete();
-        return redirect()->route('products.show',$producto);
+        return redirect()->route('products.show',$producto)->with('success', 'Materia prima eliminada con exito');
     }
 
     public function importar(Request $entrada){
@@ -164,5 +164,6 @@ class PrimeController extends Controller
     }
     public function exportar(){
         return Excel::download(new PrimeExport, 'materiaPrima.xlsx');
+        // ->with('success', 'Inventario exportado con exito');
     }
 }

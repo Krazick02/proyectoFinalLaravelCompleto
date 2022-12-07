@@ -76,7 +76,7 @@
                                                 </td>
 
                                                 <td>
-                                                    <a href="{{ route('orders.show', '1') }}" class="btn btn-info">Ver
+                                                    <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">Ver
                                                         Detalles</a>
                                                 </td>
                                             </tr>

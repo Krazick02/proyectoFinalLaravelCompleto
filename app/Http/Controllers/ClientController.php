@@ -41,8 +41,8 @@ class ClientController extends Controller
     {
         //
         $request->validate([
-            'name'=>'required',
-            'lastname'=>'required',
+            'name'=>'required|regex:/^[\pL\s\-]+$/u',
+            'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
             'user_id'=>'required|integer',
             'phone_number'=>'required|min:8|max:14',
             'email'=>'required',
@@ -60,7 +60,7 @@ class ClientController extends Controller
         }
         $client['password']=bcrypt($request -> password);
         Client::create($client);
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'Cliente creado con exito');;
     }
 
     /**
@@ -99,10 +99,10 @@ class ClientController extends Controller
     {
         //
         $request->validate([
-            'name'=>'required',
-            'lastname'=>'required',
-            'phone_number'=>'required|min:8|max:14',
-            'email'=>'required',
+            'name'=>'required|regex:/^[\pL\s\-]+$/u',
+            'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
+            'phone_number'=>'numeric|required|min:8|max:14',
+            'email'=>'required|email',
         ]);
 
         $cliente=Client::find($id);
@@ -118,7 +118,7 @@ class ClientController extends Controller
         }
 
         $cliente->update($client);
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'Cliente actualizado con exito');;
     }
 
     /**
@@ -130,6 +130,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'Cliente eliminado con exito');;
     }
 }
