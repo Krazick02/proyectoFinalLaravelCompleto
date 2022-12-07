@@ -22,21 +22,21 @@
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="name">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}"/>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}" required/>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Apellido</label>
-                        <input type="text" name="lastname" id="lastname" class="form-control" value="{{ $user->lastname }}"/>
+                        <input type="text" name="lastname" id="lastname" class="form-control" value="{{ $user->lastname }}" required/>
                     </div>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">Rol</label>
+                        <label class="form-label" for="name">Puesto</label>
                         <select name="rol" class="form-select">
                             <option value="0">Gerente</option>
                             <option value="1">Administrador</option>
@@ -57,13 +57,13 @@
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Telefono</label>
-                        <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ $user->phone_number }}"/>
+                        <input type="number" name="phone_number" id="phone_number" class="form-control" value="{{ $user->phone_number }}" required/>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-outline mb-4 text-start">
                         <label class="form-label" for="form3Example3">Correo electronico</label>
-                        <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}"/>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}" required>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,15 @@
                 <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
             </div>
         </div>
-
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     </form>
 
 @endsection

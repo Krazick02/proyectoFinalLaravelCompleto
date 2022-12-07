@@ -15,33 +15,33 @@
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">description</label>
-                        <input type="text" name="description" id="description" class="form-control" value="{{ $prime->description }}"/>
+                        <input type="text" name="description" id="description" class="form-control" value="{{ $prime->description }}" required/>
                     </div>
                 </div>
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Precio</label>
-                        <input type="text" name="amount" id="amount" class="form-control" value="{{ $prime->amount }}"/>
+                        <input type="number" name="amount" id="amount" class="form-control" value="{{ $prime->amount }}" required/>
                     </div>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">Disponible</label>
-                        <input type="text" name="stock" id="stock" class="form-control" value="{{ $prime->stock }}"/>
+                        <label class="form-label" for="lastname">Unidades disponibles</label>
+                        <input type="number" name="stock" id="stock" class="form-control" value="{{ $prime->stock }}" required/>
                     </div>
                 </div>
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Unidades minimas</label>
-                        <input type="text" name="stock_min" id="stock_min" class="form-control" value="{{ $prime->stock_min }}"/>
+                        <input type="number" name="stock_min" id="stock_min" class="form-control" value="{{ $prime->stock_min }}" required/>
                     </div>
                 </div>
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Unidades maximas</label>
-                        <input type="text" name="stock_max" id="stock_max" class="form-control" value="{{ $prime->stock_max }}"/>
+                        <input type="number" name="stock_max" id="stock_max" class="form-control" value="{{ $prime->stock_max }}" required/>
                     </div>
                 </div>
             </div>

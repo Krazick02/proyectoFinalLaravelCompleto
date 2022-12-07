@@ -12,14 +12,14 @@
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name"> name</label>
+                        <label class="form-label" for="name"> Nombre</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"/>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">description</label>
+                        <label class="form-label" for="lastname">Descripcion</label>
                         <input type="text" name="description" id="description" class="form-control" value="{{ old('description') }}"/>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">cover</label>
+                        <label class="form-label" for="name">Imagen</label>
                         <input type="file" name="cover" id="cover" class="form-control" />
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">brand</label>
+                        <label class="form-label" for="lastname">Seleccione la Marca</label>
                         {{-- <input type="text" name="brand_id" id="brand_id" class="form-control" /> --}}
                         <select class="form-select" name="brand_id" id="">
                             @foreach ($brands as $brand)
@@ -45,12 +45,12 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="alert alert-info accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Categories
+                            Seleccione las categorias :
                         </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"

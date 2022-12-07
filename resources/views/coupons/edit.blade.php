@@ -15,21 +15,21 @@
                 <div class="col-sm-6">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{ $coupon->name }}" />
+                        <input type="text" name="name" id="name" class="form-control" value="{{ $coupon->name }}" required/>
                     </div>
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Usos maximos</label>
-                        <input type="text" name="max_uses" id="max_uses" class="form-control" value="{{ $coupon->max_uses }}" />
+                        <input type="number" name="max_uses" id="max_uses" class="form-control" value="{{ $coupon->max_uses }}" required/>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Monto minimo</label>
-                        <input type="text" name="min_amount" id="min_amount" class="form-control" value="{{ $coupon->min_amount }}" />
+                        <input type="number" name="min_amount" id="min_amount" class="form-control" value="{{ $coupon->min_amount }}" required/>
                     </div>
                     <div class="form-outline text-start">
                         <label class="form-label" for="lastname">Descuento</label>
-                        <input type="text" name="discount" id="discount" class="form-control" value="{{ $coupon->discount }}" />
+                        <input type="number" name="discount" id="discount" class="form-control" value="{{ $coupon->discount }}" required/>
                     </div>
                 </div>
 

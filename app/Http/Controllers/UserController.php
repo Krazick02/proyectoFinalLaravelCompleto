@@ -40,7 +40,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|accepted^[\pL\s\-]+$/u',
+            'name'=>'required|regex:/^[\pL\s\-]+$/u',
             'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
             'rol'=>'required|integer',
             'avatar'=>'required|image|mimes:png,jpeg,svg,jpg|max:1024',
@@ -115,7 +115,7 @@ class UserController extends Controller
             'name'=>'required|regex:/^[\pL\s\-]+$/u',
             'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
             'rol'=>'required|integer|min:0|max:2|numeric',
-            'phone_number'=>'required|min:8|max:14|numeric',
+            'phone_number'=>'required|min:8|max:14',
             'email'=>'required|email',
         ]);
 

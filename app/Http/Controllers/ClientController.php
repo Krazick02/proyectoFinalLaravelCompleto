@@ -101,7 +101,7 @@ class ClientController extends Controller
         $request->validate([
             'name'=>'required|regex:/^[\pL\s\-]+$/u',
             'lastname'=>'required|regex:/^[\pL\s\-]+$/u',
-            'phone_number'=>'numeric|required|min:8|max:14',
+            'phone_number'=>'required|min:8|max:14',
             'email'=>'required|email',
         ]);
 

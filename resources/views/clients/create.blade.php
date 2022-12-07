@@ -12,57 +12,58 @@
             <div class="row mb-4">
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">First name</label>
-                        <input type="text" name="name" id="name" class="form-control" />
+                        <label class="form-label" for="name">Nombre</label>
+                        <input type="text" name="name" id="name" class="form-control" required/>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">Last name</label>
-                        <input type="text" name="lastname" id="lastname" class="form-control" />
+                        <label class="form-label" for="lastname">Apellido</label>
+                        <input type="text" name="lastname" id="lastname" class="form-control" required/>
                     </div>
                 </div>
             </div>
             <div class="row mb-4">
-                <div class="col-lg-6  col-sm-12">
+                {{-- <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="name">user_id</label>
-                        <input type="text" name="user_id" id="user_id" class="form-control" />
+                        <input type="text" name="user_id" id="user_id" class="form-control" required/>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">Cover</label>
-                        <input type="file" name="avatar" id="avatar" class="form-control" />
+                        <label class="form-label" for="lastname">Foto de perfil:</label>
+                        <input type="file" name="avatar" id="avatar" class="form-control" required/>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6  col-sm-12">
-                <div class="form-outline text-start">
-                    <label class="form-label" for="lastname">telefono</label>
-                    <input type="text" name="phone_number" id="phone_number" class="form-control" />
+                <div class="col-lg-6  col-sm-12">
+                    <div class="form-outline text-start">
+                        <label class="form-label" for="lastname">Numero de telefono</label>
+                        <input type="number" name="phone_number" id="phone_number" class="form-control" required/>
+                    </div>
                 </div>
             </div>
 
             <div class="row mb-4">
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-outline mb-4 text-start">
-                        <label class="form-label" for="form3Example3">Email address</label>
-                        <input type="email" name="email" id="email" class="form-control" />
+                        <label class="form-label" for="form3Example3">Correo electronico</label>
+                        <input type="email" name="email" id="email" class="form-control" required/>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="form-outline mb-4 text-start">
-                        <label class="form-label" for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" />
+                        <label class="form-label" for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" class="form-control" required/>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-12">
-                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                <button type="submit" class="btn btn-primary btn-block mb-4">Guardar</button>
             </div>
         </div>
 

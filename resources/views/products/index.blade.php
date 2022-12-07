@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0 font-size-18">Productos</h4>
-                    @include('layouts.alert')
+                    <h2 class="">Productos</h2>
 
 
                 </div>
             </div>
         </div>
+        @include('layouts.alert')
         <!-- end page title -->
 
         <div class="row">
@@ -26,7 +26,6 @@
                 <div class="row mb-3">
                     <div class="col-xl-4 col-sm-6">
                         <div class="mt-2">
-                            <h5>Productos</h5>
                             <a class="btn btn-success" href="{{ route('products.create') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-plus-circle" viewBox="0 0 16 16">
