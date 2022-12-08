@@ -75,7 +75,7 @@ class UserController extends Controller
         }
         $user['password']=bcrypt($request -> password);
         User::create($user);
-        return redirect()->route('Auth.login')->with('success', 'Usuario registrado con exito');;
+        return redirect()->route('auth.login')->with('success', 'Usuario registrado con exito');;
     }
 
     /**

@@ -78,7 +78,7 @@ class OrderController extends Controller
             }
             $coupon->count_uses++;
             $coupon->save();
-            $amount=$amount-($amount*$coupon->discount);
+            $amount=$amount-($amount*($coupon->discount/100));
         }
         if ($request->quantity > $stock) {
             return redirect()->route('orders.index')->with('error', 'Stock insuficiente');

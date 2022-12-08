@@ -19,7 +19,7 @@
                             <div class="col-5 align-self-end">
                                 <div class="col">
                                     <h2 class="text-bold">
-                                        {{ $order->client->name }}
+                                        Cliente #{{ $order->client->id }} : {{ $order->client->name }}
                                     </h2>
                                 </div>
                             </div>
@@ -149,7 +149,8 @@
                                                 <th data-priority="2">Descripción</th>
                                                 <th data-priority="3">Cantidad</th>
                                                 <th data-priority="4">Precio</th>
-                                                <th data-priority="4">Total</th>
+                                                <th data-priority="5">Total sin descuento:</th>
+                                                <th data-priority="6">Total con descuento:</th>
 
 
                                         </thead>
@@ -164,7 +165,8 @@
                                                     <td>{{ $order->prime->product->name }}</td>
                                                     <td>{{ $order->quantity }}</td>
                                                     <td>${{ $order->prime->amount }}</td>
-                                                    <td>${{ $order->amount }}</td>
+                                                    <td>${{ $order->prime->amount * $order->quantity}}</td>
+                                                    <td>${{ $order->amount}}</td>
 
                                                 </tr>
                                             {{-- @endforeach --}}
