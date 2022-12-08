@@ -10,17 +10,17 @@
         @csrf
         <div class="row text-center">
 
-            <div class="row mb-4">
+            <div class="row mb-4"> 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="name">First name</label>
+                        <label class="form-label" for="name">Nombre</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ $brand->name }}"/>
                     </div>
                 </div>
 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
-                        <label class="form-label" for="lastname">Last name</label>
+                        <label class="form-label" for="lastname">Descripcion</label>
                         <input type="text" name="description" id="description" class="form-control" value="{{ $brand->description }}"/>
                     </div>
                 </div>

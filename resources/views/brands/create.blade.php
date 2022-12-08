@@ -10,7 +10,7 @@
         @csrf
         <div class="row text-center">
 
-            <div class="row mb-4">
+            <div class="row mb-4"> 
                 <div class="col-lg-6  col-sm-12">
                     <div class="form-outline text-start">
                         <label class="form-label" for="name">Nombre</label>
